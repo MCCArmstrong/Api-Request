@@ -207,10 +207,8 @@
                                         <td> {{$product->id }}</td>
                                         {{-- <td> {{ dd($product->image_path) }}</td> --}}
                                         @if ($product->image_path)
-                                        @foreach ($product->image_path as $image)
-                                            <td><img src={{ $image }}></td>
-                                        @endforeach
-
+                                            <td><img src={{ $product->image_path }}></td>
+                                     
                                         @else
                                             <td>No Image</td>
                                         @endif

@@ -13,19 +13,33 @@ function getPixabay() {
         const getData = () => {
             axios.get(pixabay_url).then(response =>{
                 data = response.data.hits
-                console.log(data)
-                for(const [index, endpoint] in Object.entries(data)){
+                for(key in data){
+                    let imageObject = data[key];
                     let image = document.createElement('img');
-                    // create image tag
-                    image.src = data[index].previewURL;
+                    image.src = data[key].previewURL;
                     document.getElementById('imageFetch').appendChild(image);
-                    //create checkbox
+                    console.log(data[key]);
+
                     let checkbox =  document.createElement("input");
                     checkbox.type = 'checkbox'
-                    checkbox.id = index;
+                    checkbox.id = key;
                     checkbox.className = 'imageBox'
                     document.getElementById('imageFetch').append(checkbox)
+
                 }
+
+                // for(const [index, endpoint] in Object.entries(data)){
+                //     let image = document.createElement('img');
+                //     // create image tag
+                //     image.src = data[index].previewURL;
+                //     document.getElementById('imageFetch').appendChild(image);
+                //     //create checkbox
+                //     // let checkbox =  document.createElement("input");
+                //     // checkbox.type = 'checkbox'
+                //     // checkbox.id = index;
+                //     // checkbox.className = 'imageBox'
+                //     // document.getElementById('imageFetch').append(checkbox)
+                // }
                 
             });
                 
@@ -41,12 +55,17 @@ function handleClickToSaveToDB(){
 
     for (let i = 0; i < selectedImages.length; i++){
         if (selectedImages[i].checked){
-            filtered.push(data[selectedImages[i].id].pageURL)
+            filtered.push(data[selectedImages[i].id].previewURL)
         }
         
     }
-    // console.log(filtered)
-    // return filtered
+    let formData = new FormData();
+    formData.append('_token', $('input[name=_token]').val());
+    formData.append('images', JSON.stringify(filtered));
+
+    axios.post('/upload-image-urls', formData).then(response =>{
+        console.log(response.data);
+    });
 }
 
 

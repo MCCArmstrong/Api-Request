@@ -32,6 +32,7 @@ Route::get('/', 'dashboardController@index');
 
 // Route to Pixabay
 Route::get('/pixabay-api', 'ApiController@getApi')->name('search');
+Route::post('/upload-image-urls', 'ApiController@uploadURL')->name('upload.url');
 
 // Media 
 Route::resource('/product-media', 'MediaController');

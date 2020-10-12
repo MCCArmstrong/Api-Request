@@ -20,17 +20,13 @@ class Product extends Model
 
 
     public function getImagePathAttribute() {
-        $paths = [];
         $images = json_decode($this->image);
-        foreach($images as $image){
-            $image = "public/images/" . $image;
-            if ( $this->image != null) {
-                $path = \Request::root() . Storage::disk('local')->url($image);
-                array_push($paths, $path);
-            } else {
-                array_push($paths, "no image");
-            }
-        }
-		return $paths;
+        $image = "public/images/" . $this->image;
+        if ( $this->image != null) {
+            $path = \Request::root() . Storage::disk('local')->url($image);
+            return $path;
+        } 
+
+		return '';
 	}
 }
