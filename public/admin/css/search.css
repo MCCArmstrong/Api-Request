@@ -1,0 +1,65 @@
+[v-cloak] {
+    display: none;
+  }
+  .active {
+      background-color: #f5f5f5;
+  }
+  
+  /* Styling Vue Search Widget - You can customize it as you wish */
+  .widget {
+      border: 1px solid #c5c5c5;
+      background: white;
+      position: absolute;
+      cursor: pointer;
+      list-style: none;
+      padding: 0;
+      z-index: 100;
+  }
+  .menu-item{
+      height: 80px;
+      border: 1px solid #ececf9;
+  }
+  .list_item_container {
+      width: 98%;
+      float: left;
+  }
+  
+  .image {
+      width: 10%;
+      float: left;
+      padding: 10px;
+  }
+  .image img{
+      width: 80px;
+      height : 60px;
+  }
+  .label{
+      width: 89%;
+      float:right;
+      color: rgb(124,77,255);
+      font-weight: bold;
+      text-align: left;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+  }
+  @media only screen and (max-width:768px) {
+  
+      .image img{
+          width: 70px;
+          height : 55px;
+      }
+      .label{
+          width: 70%;
+      }
+      .label h4{
+          font-size: 15px;
+      }
+  }
+  
+  /* To get a indigo focus color in search input - Not nessary */
+  input[type="text"]:focus{
+    border-color: #5b518b !important; 
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #5b518b !important;
+    outline: 0 none;
+  }
